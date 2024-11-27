@@ -21,6 +21,15 @@ You'll need to create a new node server. Open a new terminal within the project 
 
 The starter code has a task for you to complete an endpoint in `./src/server.ts` which uses query parameter to download an image from a public URL, filter the image, and return the result.
 
+Code:
+
+![alt text](image-1.png)
+
+Execution:
+
+![alt text](image.png)
+
+
 We've included a few helper functions to handle some of these concepts and we're importing it for you at the top of the `./src/server.ts`  file.
 
 ```typescript

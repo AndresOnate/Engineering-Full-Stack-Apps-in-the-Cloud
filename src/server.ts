@@ -30,10 +30,17 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
   /**************************************************************************** */
 
   //! END @TODO1
+  function validateURL(pURL: string) {
+    var regexQuery = "^(https?://)?(www\\.)?([-a-z0-9]{1,63}\\.)*?[a-z0-9][-a-z0-9]{0,61}[a-z0-9]\\.[a-z]{2,6}(/[-\\w@\\+\\.~#\\?&/=%]*)?$";
+    var url = new RegExp(regexQuery,"i");
+    return url.test(pURL);
+  }
+
 
   app.get( "/filteredimage", async ( req, res ) => {
     let image_url = req.query.image_url;
-    if (image_url) {
+    var is_image_url_valid = validateURL(image_url);
+    if (image_url && is_image_url_valid) {
       filterImageFromURL(image_url).then((response) => {
         res.sendFile(response);
         res.on('finish', function() {
